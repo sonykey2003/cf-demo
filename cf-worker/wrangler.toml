@@ -1,0 +1,10 @@
+name = "secure-worker"
+main = "src/index.js"
+compatibility_date = "2024-03-10"
+
+[[r2_buckets]]
+binding = "FLAG_BUCKET"
+bucket_name = "demo"
+
+[vars]
+PUBLIC_URL = "https://tunnel.theantechs.com"

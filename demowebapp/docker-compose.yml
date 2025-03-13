@@ -1,0 +1,43 @@
+#version: '3.9'
+
+services:
+  main-app:
+    build: ./main
+    container_name: main-app
+    ports:
+      - "5500:5500"
+    environment:
+      - URL=main-app
+
+  it-app:
+    build: ./paths
+    container_name: it-app
+    ports:
+      - "5600:5600"
+    environment:
+      - ROLE=IT
+      - PORT=5600
+
+  hr-app:
+    build: ./paths
+    container_name: hr-app
+    ports:
+      - "5700:5600"
+    environment:
+      - ROLE=HR
+      - PORT=5600
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARED_TOKEN}
+    environment:
+      - CLOUDFLARED_TOKEN=${CLOUDFLARED_TOKEN}
+    depends_on:
+      - main-app
+      - it-app
+      - hr-app
+
+networks:
+  default:
+    driver: bridge
