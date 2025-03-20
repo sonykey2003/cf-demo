@@ -1,5 +1,5 @@
 import os
-from flask import Flask, redirect
+from flask import Flask, redirect , request
 
 app = Flask(__name__)
 domain = "theantechs.com"
@@ -20,7 +20,19 @@ def index():
         <h1>Welcome to your company page!</h1>
         <p><a href="/it">IT admin</a> space </p>
         <p><a href="/hr">HR admin</a> space</p>
+        <p><a href="/headers">This is the requst headers</a> space</p>
     """
+
+
+@app.route('/headers')
+def headers():
+    headers = request.headers
+    headers_html = "<h1>HTTP Request Headers</h1><ul>"
+    for key, value in headers.items():
+        headers_html += f"<li><strong>{key}:</strong> {value}</li>"
+    headers_html += "</ul>"
+    
+    return headers_html, 200, {"Content-Type": "text/html"}
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5500)
