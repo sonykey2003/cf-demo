@@ -3,7 +3,7 @@
 services:
   main-app:
     build: ./main
-    container_name: main-app
+    container_name: cf-main-app
     ports:
       - "5500:5500"
     environment:
@@ -11,7 +11,7 @@ services:
 
   it-app:
     build: ./paths
-    container_name: it-app
+    container_name: cf-it-app
     ports:
       - "5600:5600"
     environment:
@@ -20,7 +20,7 @@ services:
 
   hr-app:
     build: ./paths
-    container_name: hr-app
+    container_name: cf-hr-app
     ports:
       - "5700:5600"
     environment:
@@ -34,9 +34,9 @@ services:
     environment:
       - CLOUDFLARED_TOKEN=${CLOUDFLARED_TOKEN}
     depends_on:
-      - main-app
-      - it-app
-      - hr-app
+      - cf-main-app
+      - cf-it-app
+      - cf-hr-app
 
 networks:
   default:
