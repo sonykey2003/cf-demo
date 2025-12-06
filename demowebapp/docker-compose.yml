@@ -1,7 +1,7 @@
 #version: '3.9'
 
 services:
-  main-app:
+  cf-main-app:
     build: ./main
     container_name: cf-main-app
     ports:
@@ -9,7 +9,7 @@ services:
     environment:
       - URL=main-app
 
-  it-app:
+  cf-it-app:
     build: ./paths
     container_name: cf-it-app
     ports:
@@ -18,7 +18,7 @@ services:
       - ROLE=IT
       - PORT=5600
 
-  hr-app:
+  cf-hr-app:
     build: ./paths
     container_name: cf-hr-app
     ports:
