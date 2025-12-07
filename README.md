@@ -33,17 +33,35 @@ This project consists of:
 └── docker-compose.yml
 ```
 
-## Running the Application & CF Tunnel
-
-
+# Run The Application Locally
+* In Main/main.py, uncomment line 12 and comment out line 13:
+```py
+return redirect(f"http://{localhost}:5600", code=302)
+#return redirect(f"http://it.{domain}", code=302)
+```
+* Do the same on line 18,19:
+```py
+return redirect(f"http://{localhost}:5700", code=302)
+#return redirect(f"http://hr.{domain}", code=302)
+```
+* Run the app:
 ```bash
-export CLOUDFLARED_TOKEN="your-tunnel-token"
 docker-compose up -d --build
 ```
 
 - Main App at: `http://localhost:5500`
 - IT page at `http://localhost:5600`
 - HR page at `http://localhost:5700`
+## Run the Application On Internet
+
+* Reverse the changes in Main/main.py.
+* Run the app:
+
+```bash
+export CLOUDFLARED_TOKEN="your-tunnel-token"
+docker-compose up -d --build
+```
+
 - CloudFlared Tunnel agent will proxy the app's traffic securely to CF servers.
 
 
