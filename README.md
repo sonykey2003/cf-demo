@@ -10,7 +10,7 @@ This project consists of:
 ## Prerequisites
 
 - [Docker](https://www.docker.com/) and Docker Compose installed.
-- Cloudflare account with Cloudflare Tunnel [configured](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-remote-tunnel/).
+- A free Cloudflare account.
 
 ## Project Structure
 
@@ -61,6 +61,9 @@ docker-compose up -d --build
 export CLOUDFLARED_TOKEN="your-tunnel-token"
 docker-compose up -d --build
 ```
+
+- Setup Cloudflare Tunnel [configured](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-remote-tunnel/).
+  * Make sure using the container names when publishing the application:<img src="https://github.com/user-attachments/assets/f20e99ec-32cd-4ac8-a882-a861958310eb"  width=50% height=50%>
 
 - CloudFlared Tunnel agent will proxy the app's traffic securely to CF servers.
 
