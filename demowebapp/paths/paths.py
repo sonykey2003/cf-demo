@@ -16,6 +16,14 @@ def home():
             <p>こんにちは!</p>
             <p>สวัสดี!</p>
         """
+    elif role == 'Gamers':
+        return """
+        <h1>Welcome to the Gamers' page!</h1>
+        <p>Enjoy your gaming!</p>
+        <div><script src="https://cdn.htmlgames.com/embed.js?game=CarMatch&amp;bgcolor=white"></script></div>
+
+        """
+    
     elif role == 'HR':
         return """
             <h1>Welcome to the HR page!</h1>

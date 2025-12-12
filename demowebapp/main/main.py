@@ -6,27 +6,33 @@ domain = "theantechs.com"
 localhost = '127.0.0.1'
 
 # Define role-based access control based on path
-@app.route('/it')
-def page_it():
-    # Redirect to a different URL, e.g., http://it.yourdomain.com:8080
-    return redirect(f"http://{localhost}:5600", code=302)
-    #return redirect(f"http://it.{domain}", code=302)
-
-@app.route('/hr')
-def page_hr():
-    # Redirect to a different URL for HR, e.g., another service or page
-    return redirect(f"http://{localhost}:5700", code=302)
-    #return redirect(f"http://hr.{domain}", code=302)
-
 @app.route('/')
 def index():
     return """
         <h1>Welcome to your company page!</h1>
         <p><a href="/it">IT admin</a> space </p>
         <p><a href="/hr">HR admin</a> space</p>
+        <p><a href="/gamers">Gamers</a> space</p>
         <p><a href="/headers">This is the requst headers</a> space</p>
     """
 
+@app.route('/it')
+def page_it():
+    # Redirect to a different URL, e.g., http://it.yourdomain.com:8080
+    #return redirect(f"http://{localhost}:5600", code=302)
+    return redirect(f"http://it.{domain}", code=302)
+
+@app.route('/hr')
+def page_hr():
+    # Redirect to a different URL for HR, e.g., another service or page
+    #return redirect(f"http://{localhost}:5700", code=302)
+    return redirect(f"http://hr.{domain}", code=302)
+
+@app.route('/gamers')
+def page_gamers():
+    # Redirect to a different URL for HR, e.g., another service or page
+    #return redirect(f"http://{localhost}:5700", code=302)
+    return redirect(f"http://gamers.{domain}", code=302)
 
 @app.route('/headers')
 def headers():

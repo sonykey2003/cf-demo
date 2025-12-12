@@ -26,6 +26,14 @@ services:
     environment:
       - ROLE=HR
       - PORT=5600
+  cf-gamers-app:
+    build: ./paths
+    container_name: cf-gamers-app
+    ports:
+      - "5800:5600"
+    environment:
+      - ROLE=Gamers
+      - PORT=5600
 
   cloudflared:
     image: cloudflare/cloudflared:latest
@@ -37,6 +45,7 @@ services:
       - cf-main-app
       - cf-it-app
       - cf-hr-app
+      - cf-gamers-app
 
 networks:
   default:
